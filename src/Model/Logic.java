@@ -13,7 +13,7 @@ public class Logic {
 	public PApplet app;
 	private int rating;
 	private LinkedList<Netflix> listNet;
-	private String name,year,movie,serie;
+	private String name,year,movie,serie,tipo;
 	private Netflix [] net;
 	
 	
@@ -28,19 +28,15 @@ public class Logic {
 			
 			year = cargar[2];
 			name = cargar[1];
-			serie = cargar [4];
-			movie = cargar [4];
-			int rating = Integer.parseInt(cargar[3]);
-			if(cargar[0].contentEquals("Serie")) {
-				net[i] = new Serie(rating,name,year,serie,app);
-			}else {
-				net[i] = new Movie(rating,name,year,movie,app);
-			}
+			
+			int rating = Integer.parseInt(cargar[2]);
+			
+			listNet.add(new Netflix(rating,name,year,tipo,app));
 			
 		}
 		}
-		public void addListNet(int rating,String name, String year, String serie, PApplet app) {
-			
+		public void addListNet(int rating,String name, String year, String tipo, PApplet app) {
+			listNet.add(new Netflix(rating,name,year, tipo,app));
 	
 	}	
 			public void sortList(char c) {
